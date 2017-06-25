@@ -18,7 +18,7 @@ public class EarthQuakeData {
         mLocation = vLocation;
         mDate = vDate;
     }
-
+// getters
     public String getmMagnitude() {
         return mMagnitude;
     }
@@ -30,4 +30,6 @@ public class EarthQuakeData {
     public String getmDate() {
         return mDate;
     }
+
+
 }
