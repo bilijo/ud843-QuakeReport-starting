@@ -1,69 +1,62 @@
 package com.example.android.quakereport;
 
-import android.app.Activity;
 import android.content.Context;
-import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import static com.example.android.quakereport.EarthquakeActivity.holder;
 
 /**
  * Created by dam on 25.06.2017.
  */
 
-public class EarthQuakeDataAdapter extends ArrayAdapter<>{
-    private final Context context;
-    public static ViewHolder holder;
-// Constructor
+public class EarthQuakeDataAdapter extends ArrayAdapter<EarthQuakeData> {
+   // private static final String LOG_TAG = EarthQuakeDataAdapter.class.getSimpleName();
+
+    // Constructor
       /* @param context The current context. Used to inflate the layout file.
       * @param earthQuakeDatas A List of EarthQuakeData objects to display in a list
      */
-    public EarthQuakeDataAdapter(@NonNull Context context,  @NonNull ArrayList<EarthQuakeData> earthQuakeDatas) {
+    public EarthQuakeDataAdapter(@NonNull Context context, @NonNull ArrayList<EarthQuakeData> earthQuakeDatas) {
         super(context, 0, earthQuakeDatas);
-        this.context = context;
 
-    }
-
-    public static class ViewHolder {
-        private TextView nameTextView;
-        private TextView locationTextView;
-        private TextView dateTextView;
     }
 
     @NonNull
     @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-
-
-        if (convertView == null) {
-            convertView = LayoutInflater.inflate(R.layout.earthquake_activity, null);
-
-            holder.nameTextView = (TextView) convertView.findViewById(R.id.textView_magnitude);
-            holder.locationTextView = (TextView) convertView.findViewById(R.id.textView_location);
-            holder.dateTextView = (TextView) convertView.findViewById(R.id.textView_date);
-            convertView.setTag(holder);
-        }
-        else {
-            holder = (ViewHolder) convertView.getTag();
+    public View getView(int position, View convertView, ViewGroup parent) {
+        // Check if the existing view is being reused, otherwise inflate the view
+        View listItemView = convertView;
+        if(listItemView == null) {
+            // use the layout of the data items to be displayed
+            listItemView = LayoutInflater.from(getContext()).inflate(
+                    R.layout.list_earthquake_data, parent, false);
         }
 
-        EarthQuakeData earthQuake ;
-        earthQuake = getItem(position);
 
-        holder.nameTextView.setText(earthQuake.getmMagnitude());
-        holder.locationTextView.setText(earthQuake.getmLocation());
-        holder.dateTextView.setText(earthQuake.getmDate());
+        // Get the {@link AndroidFlavor} object located at this position in the list
+            EarthQuakeData currentEarthQuakeData = getItem(position);
 
-        return convertView;
+        // getmMagnitude
+        TextView magnitudeTextView = (TextView) listItemView.findViewById(R.id.textView_magnitude);
+        magnitudeTextView.setText(currentEarthQuakeData.getmMagnitude());
+
+        //getmLocation
+        TextView locationTextView = (TextView) listItemView.findViewById(R.id.textView_location);
+        locationTextView.setText(currentEarthQuakeData.getmLocation());
+
+        //getmDate
+        TextView dateTextView = (TextView) listItemView.findViewById(R.id.textView_date);
+        dateTextView.setText(currentEarthQuakeData.getmDate());
+
+        return listItemView;
+
+        }
+
     }
-}

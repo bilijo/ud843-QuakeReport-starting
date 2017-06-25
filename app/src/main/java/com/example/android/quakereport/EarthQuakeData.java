@@ -5,21 +5,21 @@ package com.example.android.quakereport;
  */
 
 public class EarthQuakeData {
-  // Variables of the class
-    private int mMagnitude;
+    // Variables of the class
+    private String mMagnitude;
     private String mLocation;
     private String mDate;
 
-     /*
-    * Create a constructor of EarthQuakeData class.
-    */
-    public EarthQuakeData(int vMagnitude, String vLocation, String vDate) {
-          mMagnitude = vMagnitude ;
-         mLocation = vLocation;
-         mDate = vDate;
+    /*
+   * Create a constructor of EarthQuakeData class.
+   */
+    public EarthQuakeData(String vMagnitude, String vLocation, String vDate) {
+        mMagnitude = vMagnitude;
+        mLocation = vLocation;
+        mDate = vDate;
     }
 
-    public int getmMagnitude() {
+    public String getmMagnitude() {
         return mMagnitude;
     }
 
