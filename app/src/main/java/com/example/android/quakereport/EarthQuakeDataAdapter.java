@@ -40,20 +40,26 @@ public class EarthQuakeDataAdapter extends ArrayAdapter<EarthQuakeData> {
         }
 
 
-        // Get the {@link AndroidFlavor} object located at this position in the list
+        // Get the {@link EarthQuakeData} object located at this position in the list
             EarthQuakeData currentEarthQuakeData = getItem(position);
 
         // getmMagnitude
         TextView magnitudeTextView = (TextView) listItemView.findViewById(R.id.textView_magnitude);
         magnitudeTextView.setText(currentEarthQuakeData.getmMagnitude());
 
+        //getmKm
+        TextView kmLocationTextView = (TextView) listItemView.findViewById(R.id.textView_km_location);
+        kmLocationTextView.setText(currentEarthQuakeData.getmKm());
         //getmLocation
-        TextView locationTextView = (TextView) listItemView.findViewById(R.id.textView_location);
-        locationTextView.setText(currentEarthQuakeData.getmLocation());
+        TextView placelocationTextView = (TextView) listItemView.findViewById(R.id.textView_location);
+        placelocationTextView.setText(currentEarthQuakeData.getmLocation());
 
         //getmDate
         TextView dateTextView = (TextView) listItemView.findViewById(R.id.textView_date);
         dateTextView.setText(currentEarthQuakeData.getmDate());
+        //getmTime
+        TextView timeTextView = (TextView) listItemView.findViewById(R.id.textView_time);
+        timeTextView.setText(currentEarthQuakeData.getmTime());
 
         return listItemView;
 

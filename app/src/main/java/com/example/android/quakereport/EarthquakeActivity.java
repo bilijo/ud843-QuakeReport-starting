@@ -35,10 +35,8 @@ public class EarthquakeActivity extends AppCompatActivity {
         // Create a fake list of earthquake locations.
         ArrayList<EarthQuakeData> earthQuakeDatas = new ArrayList<>();
 
-        earthQuakeDatas.add(new EarthQuakeData("1", "San Francisco", "23"));
-        earthQuakeDatas.add(new EarthQuakeData("1", "San Francisco", "23"));
-        earthQuakeDatas.add(new EarthQuakeData("1", "San Francisco", "23"));
-
+        //earthQuakeDatas = QueryUtils.extractEarthquakes();
+     earthQuakeDatas = QueryUtils.extractEarthquakes();
 
         // Create a new {@link EarthQuakeDataAdapter} of earthQuakeDatas
         EarthQuakeDataAdapter adapter = new EarthQuakeDataAdapter(this, earthQuakeDatas);

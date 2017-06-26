@@ -1,24 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="16dp">
 
     <TextView
         android:id="@+id/textView_magnitude"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_margin="10dp"
         android:text="eee"/>
 
     <TextView
-        android:id="@+id/textView_location"
-        android:layout_width="wrap_content"
+        android:id="@+id/textView_km_location"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="eee"/>
+        android:layout_weight="1"
+        android:layout_margin="10dp"
+        android:text="gggg"/>
+
+    <TextView
+        android:id="@+id/textView_location"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_margin="10dp"
+        android:text="gggg"/>
+
     <TextView
         android:id="@+id/textView_date"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_margin="10dp"
+        android:text="eee"/>
+
+    <TextView
+        android:id="@+id/textView_time"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_margin="10dp"
         android:text="eee"/>
 
 
