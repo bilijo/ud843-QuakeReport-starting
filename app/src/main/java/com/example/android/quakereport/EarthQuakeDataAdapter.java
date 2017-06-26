@@ -2,13 +2,13 @@ package com.example.android.quakereport;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 
@@ -33,19 +33,26 @@ public class EarthQuakeDataAdapter extends ArrayAdapter<EarthQuakeData> {
     public View getView(int position, View convertView, ViewGroup parent) {
         // Check if the existing view is being reused, otherwise inflate the view
         View listItemView = convertView;
-        if(listItemView == null) {
-            // use the layout of the data items to be displayed
-            listItemView = LayoutInflater.from(getContext()).inflate(
-                    R.layout.list_earthquake_data, parent, false);
-        }
-
+            if(listItemView == null) {
+                // use the layout of the data items to be displayed
+                listItemView = LayoutInflater.from(getContext()).inflate(
+                        R.layout.list_earthquake_data, parent, false);
+            }
 
         // Get the {@link EarthQuakeData} object located at this position in the list
             EarthQuakeData currentEarthQuakeData = getItem(position);
 
         // getmMagnitude
-        TextView magnitudeTextView = (TextView) listItemView.findViewById(R.id.textView_magnitude);
-        magnitudeTextView.setText(currentEarthQuakeData.getmMagnitude());
+        //TextView magnitudeTextView = (TextView) listItemView.findViewById(R.id.textView_magnitude);
+        //magnitudeTextView.setText(currentEarthQuakeData.getmMagnitude());
+
+        // Find the TextView with view ID magnitude
+        TextView magnitudeView = (TextView) listItemView.findViewById(R.id.textView_magnitude);
+        // Format the magnitude to show 1 decimal place
+        String formattedMagnitude = formatMagnitude(currentEarthQuakeData.getmMagnitude());
+        // Display the magnitude of the current earthquake in that TextView
+        magnitudeView.setText(formattedMagnitude);
+
 
         //getmKm
         TextView kmLocationTextView = (TextView) listItemView.findViewById(R.id.textView_km_location);
@@ -64,5 +71,14 @@ public class EarthQuakeDataAdapter extends ArrayAdapter<EarthQuakeData> {
         return listItemView;
 
         }
+
+    /**
+     * Return the formatted magnitude string showing 1 decimal place (i.e. "3.2")
+     * from a decimal magnitude value.
+     */
+    private String formatMagnitude(double magnitude) {
+        DecimalFormat magnitudeFormat = new DecimalFormat("0.0");
+        return magnitudeFormat.format(magnitude);
+    }
 
     }

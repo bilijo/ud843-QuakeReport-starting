@@ -6,7 +6,8 @@ package com.example.android.quakereport;
 
 public class EarthQuakeData {
     // Variables of the class
-    private String mMagnitude;
+    //private String mMagnitude;
+    private double mMagnitude;
     private String mKm;
     private String mLocation;
     private String mDate;
@@ -22,7 +23,7 @@ public class EarthQuakeData {
    *  earthquake happened
    */
 
-    public EarthQuakeData(String vMagnitude, String vKm, String vLocation, String vDate, String vTime) {
+    public EarthQuakeData(double vMagnitude, String vKm, String vLocation, String vDate, String vTime) {
         mMagnitude = vMagnitude;
         mKm = vKm;
         mLocation = vLocation;
@@ -31,7 +32,7 @@ public class EarthQuakeData {
     }
 
 // getters
-    public String getmMagnitude() {
+    public double getmMagnitude() {
         return mMagnitude;
     }
 

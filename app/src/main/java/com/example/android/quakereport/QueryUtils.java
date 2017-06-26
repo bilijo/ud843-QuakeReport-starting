@@ -70,9 +70,16 @@ public final class QueryUtils {
                 featureObject = featuresArray.getJSONObject(i);
                 JSONObject prop = featureObject.getJSONObject("properties");
 
-                String mag = prop.getString("mag");
+
+                //magnitude
+                //-------- String mag = prop.getString("mag");
+                // Extract the value for the key called "mag"
+                double magnitude = prop.getDouble("mag");
+
                 String place = prop.getString("place");
                 String time = prop.getString("time");
+
+
                 //date
                 long timeInMilliseconds = Long.parseLong(time);
                 Date dateObject = new Date(timeInMilliseconds);
@@ -100,7 +107,7 @@ public final class QueryUtils {
 
 
                 // build up a list of Earthquake objects with the corresponding data.
-                EarthQuakeData tremblement = new EarthQuakeData(mag,placeKm,placeDesignation,dateToDisplay,timeToDisplay);
+                EarthQuakeData tremblement = new EarthQuakeData(magnitude,placeKm,placeDesignation,dateToDisplay,timeToDisplay);
                 earthQuakeDatas.add(tremblement);
             }
 
