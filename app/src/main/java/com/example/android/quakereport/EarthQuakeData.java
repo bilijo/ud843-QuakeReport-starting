@@ -10,8 +10,9 @@ public class EarthQuakeData {
     private double mMagnitude;
     private String mKm;
     private String mLocation;
-    private String mDate;
-    private String mTime;
+    private String mUrl;
+    private long mTime;
+
 
    /*
    * Constructs a new {@link EarthQuakeData} object.
@@ -23,11 +24,11 @@ public class EarthQuakeData {
    *  earthquake happened
    */
 
-    public EarthQuakeData(double vMagnitude, String vKm, String vLocation, String vDate, String vTime) {
+    public EarthQuakeData(double vMagnitude,  String vLocation,  long vTime, String url) {
         mMagnitude = vMagnitude;
-        mKm = vKm;
+       // mKm = vKm;
         mLocation = vLocation;
-        mDate = vDate;
+        mUrl = url;
         mTime = vTime;
     }
 
@@ -44,11 +45,11 @@ public class EarthQuakeData {
         return mLocation;
     }
 
-    public String getmDate() {
-        return mDate;
+    public String getMurl() {
+        return mUrl;
     }
 
-    public String getmTime() {
+    public long getmTime() {
         return mTime;
     }
 
