@@ -15,15 +15,24 @@
  */
 package com.example.android.quakereport;
 
+import android.app.usage.UsageEvents;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 
 public class EarthquakeActivity extends AppCompatActivity {
 
-    //public static final String LOG_TAG = EarthquakeActivity.class.getName();
+    public static final String LOG_TAG = EarthquakeActivity.class.getName();
+    /**
+     * Sample JSON response for a USGS query
+     */
+    private static final String SAMPLE_JSON_RESPONSE =
+            "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&eventtype=earthquake&orderby=time&minmag=6&limit=10";
 
 
     @Override
@@ -31,20 +40,24 @@ public class EarthquakeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.earthquake_activity);
 
-        // Create a fake list of earthquake locations.
-        ArrayList<EarthQuakeData> earthQuakeDatas = new ArrayList<>();
 
         //earthQuakeDatas = QueryUtils.extractEarthquakes();
-     earthQuakeDatas = QueryUtils.extractEarthquakes();
+        Event earthQuakeDatas = QueryUtils.fetchEarthquakeData(SAMPLE_JSON_RESPONSE);
 
-        // Create a new {@link EarthQuakeDataAdapter} of earthQuakeDatas
-        EarthQuakeDataAdapter adapter = new EarthQuakeDataAdapter(this, earthQuakeDatas);
 
-        // Find a reference to the {@link ListView} in the layout
-        ListView earthquakeListView = (ListView) findViewById(R.id.list);
 
-        // Set the adapter on the {@link ListView}
-        // so the list can be populated in the user interface
-        earthquakeListView.setAdapter(adapter);
+   /* private class EarthquakeAsyncTask extends AsyncTask<String, Void, String>{
+
+        @Override
+        protected String doInBackground(String... params) {
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute() {
+
+        }
+    }  */
+
     }
 }
