@@ -57,6 +57,7 @@ public class EarthQuakeDataAdapter extends ArrayAdapter<EarthQuakeData> {
         //getmKm
         TextView kmLocationTextView = (TextView) listItemView.findViewById(R.id.textView_km_location);
         kmLocationTextView.setText(currentEarthQuakeData.getmKm());
+
         //getmLocation
         TextView placelocationTextView = (TextView) listItemView.findViewById(R.id.textView_location);
         placelocationTextView.setText(currentEarthQuakeData.getmLocation());
@@ -64,6 +65,7 @@ public class EarthQuakeDataAdapter extends ArrayAdapter<EarthQuakeData> {
         //getmDate
         TextView dateTextView = (TextView) listItemView.findViewById(R.id.textView_date);
         dateTextView.setText(currentEarthQuakeData.getmDate());
+
         //getmTime
         TextView timeTextView = (TextView) listItemView.findViewById(R.id.textView_time);
         timeTextView.setText(currentEarthQuakeData.getmTime());

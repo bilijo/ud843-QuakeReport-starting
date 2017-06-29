@@ -15,11 +15,12 @@
  */
 package com.example.android.quakereport;
 
-import android.app.usage.UsageEvents;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -31,7 +32,7 @@ public class EarthquakeActivity extends AppCompatActivity {
     /**
      * Sample JSON response for a USGS query
      */
-    private static final String SAMPLE_JSON_RESPONSE =
+    private static final String USGS_URL_EARTHQUAKE =
             "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&eventtype=earthquake&orderby=time&minmag=6&limit=10";
 
 
@@ -42,22 +43,50 @@ public class EarthquakeActivity extends AppCompatActivity {
 
 
         //earthQuakeDatas = QueryUtils.extractEarthquakes();
-        Event earthQuakeDatas = QueryUtils.fetchEarthquakeData(SAMPLE_JSON_RESPONSE);
+        Event earthQuakeDatas = QueryUtils.fetchEarthquakeData(USGS_URL_EARTHQUAKE);
 
+        updateUi(earthQuakeDatas);
 
-
-   /* private class EarthquakeAsyncTask extends AsyncTask<String, Void, String>{
-
-        @Override
-        protected String doInBackground(String... params) {
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute() {
-
-        }
-    }  */
+        Log.d(LOG_TAG,"earthQuakeDatas" +  earthQuakeDatas);
 
     }
-}
+      /*
+     * Update the UI with the given earthquake information.
+     */
+
+        public void updateUi(Event earthQuakeDatas) {
+            TextView magnitudeTextView = (TextView) findViewById(R.id.textView_magnitude);
+            magnitudeTextView.setText(earthQuakeDatas.magnitude);
+
+            TextView kmLocation = (TextView) findViewById(R.id.textView_km_location);
+            kmLocation.setText(earthQuakeDatas.kmLocation);
+
+            TextView locationTextView = (TextView) findViewById(R.id.textView_location);
+            locationTextView.setText(earthQuakeDatas.location);
+
+            TextView dateTextView = (TextView) findViewById(R.id.textView_date);
+            dateTextView.setText(earthQuakeDatas.date);
+
+            TextView timeTextView = (TextView) findViewById(R.id.textView_time);
+            timeTextView.setText(earthQuakeDatas.time);
+         }
+
+
+       /* private class EarthquakeAsyncTask extends AsyncTask<String, Void, String>{
+
+            @Override
+            protected String doInBackground(String... params) {
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute() {
+
+            }
+        }
+         */
+
+
+
+  }
+

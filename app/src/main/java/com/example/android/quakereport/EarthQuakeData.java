@@ -39,6 +39,7 @@ public class EarthQuakeData {
     public String getmKm() {
         return mKm;
     }
+
     public String getmLocation() {
         return mLocation;
     }
@@ -46,6 +47,7 @@ public class EarthQuakeData {
     public String getmDate() {
         return mDate;
     }
+
     public String getmTime() {
         return mTime;
     }

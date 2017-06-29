@@ -15,8 +15,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
+import java.sql.Time;
 import java.util.Date;
 
 /**
@@ -28,8 +27,8 @@ public final class QueryUtils {
     public static final String LOG_TAG = QueryUtils.class.getSimpleName();
 
     /** Sample JSON response for a USGS query */
-    private static final String SAMPLE_JSON_RESPONSE =
-            "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&eventtype=earthquake&orderby=time&minmag=6&limit=10";
+   // private static final String SAMPLE_JSON_RESPONSE =
+          //  "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&eventtype=earthquake&orderby=time&minmag=6&limit=10";
 
     /**
      * Query the USGS dataset and return an {@link Event} object to represent a single earthquake.
@@ -148,12 +147,14 @@ public final class QueryUtils {
                 JSONObject properties = firstFeature.getJSONObject("properties");
 
                 // Extract out the title, number of people, and perceived strength values
-                String title = properties.getString("title");
-                String numberOfPeople = properties.getString("felt");
-                String perceivedStrength = properties.getString("cdi");
+                int magnitude = properties.getInt("mag");
+                String location = properties.getString("place");
+                String kmLocation = properties.getString("place");
+                String date = properties.getString("date");
+                String time = properties.getString("time");
 
                 // Create a new {@link Event} object
-                return new Event(title, numberOfPeople, perceivedStrength);
+                return new Event(magnitude, location, kmLocation, date,time);
             }
         } catch (JSONException e) {
             Log.e(LOG_TAG, "Problem parsing the earthquake JSON results", e);
