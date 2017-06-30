@@ -5,6 +5,8 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.LoaderManager;
+import android.app.LoaderManager.LoaderCallbacks;
+import android.content.Loader;
 import android.content.AsyncTaskLoader;
 import android.content.Loader;
 import android.content.Context;
@@ -21,8 +23,8 @@ import static com.example.android.quakereport.R.id.list;
 /**
  * Created by dam on 29.06.2017.
  */
+public class EarthquakeDataActivity extends AppCompatActivity  implements LoaderCallbacks<List<EarthQuakeData>> {
 
-public class EarthQuakeDataActivity extends AppCompatActivity implements android.app.LoaderManager.LoaderCallbacks<EarthQuakeData> {
 
 
     /**
@@ -32,7 +34,7 @@ public class EarthQuakeDataActivity extends AppCompatActivity implements android
     private static final int EARTHQUAKE_LOADER_ID = 1;
 
 
-    public static final String LOG_TAG = EarthQuakeDataActivity.class.getName();
+    public static final String LOG_TAG = EarthquakeDataActivity.class.getName();
     /**
      * Sample JSON response for a USGS query
      */
@@ -60,8 +62,6 @@ public class EarthQuakeDataActivity extends AppCompatActivity implements android
         // Set the adapter on the {@link ListView}
         // so the list can be populated in the user interface
         earthquakeListView.setAdapter(mAdapter);
-
-
 
 
         // Set an item click listener on the ListView, which sends an intent to a web browser
@@ -92,14 +92,12 @@ public class EarthQuakeDataActivity extends AppCompatActivity implements android
         // because this activity implements the LoaderCallbacks interface).
         loaderManager.initLoader(EARTHQUAKE_LOADER_ID, null, this);
 
-
-
     }
 
     @Override
     public Loader<List<EarthQuakeData>> onCreateLoader(int i, Bundle bundle) {
         // Create a new loader for the given URL
-        return new EarthQuakeData(this, USGS_REQUEST_URL);
+        return new EarthquakeLoader(this,USGS_REQUEST_URL);
     }
 
     @Override
