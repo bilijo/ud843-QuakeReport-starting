@@ -64,11 +64,11 @@ public class EarthQuakeDataAdapter extends ArrayAdapter<EarthQuakeData> {
 
         //getmDate
         TextView dateTextView = (TextView) listItemView.findViewById(R.id.textView_date);
-        dateTextView.setText(currentEarthQuakeData.getMurl());
+        dateTextView.setText(currentEarthQuakeData.getUrl());
 
         //getmTime
         TextView timeTextView = (TextView) listItemView.findViewById(R.id.textView_time);
-        timeTextView.setText((int) currentEarthQuakeData.getmTime());
+        timeTextView.setText(String.valueOf(currentEarthQuakeData.getmTime()));
 
         return listItemView;
 

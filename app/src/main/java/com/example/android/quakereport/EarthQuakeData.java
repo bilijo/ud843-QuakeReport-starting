@@ -45,13 +45,13 @@ public class EarthQuakeData {
         return mLocation;
     }
 
-    public String getMurl() {
-        return mUrl;
-    }
 
     public long getmTime() {
         return mTime;
     }
 
 
+    public String getUrl( ) {
+        return mUrl;
+    }
 }
