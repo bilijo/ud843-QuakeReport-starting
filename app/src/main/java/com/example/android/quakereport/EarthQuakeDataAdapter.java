@@ -1,7 +1,12 @@
 package com.example.android.quakereport;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +16,11 @@ import android.widget.TextView;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
+import static android.R.attr.color;
+import static android.R.attr.shape;
+import static com.example.android.quakereport.R.drawable.magnitude_circle;
+import static com.example.android.quakereport.R.id.textView_magnitude;
+
 
 /**
  * Created by dam on 25.06.2017.
@@ -19,6 +29,9 @@ import java.util.ArrayList;
 public class EarthQuakeDataAdapter extends ArrayAdapter<EarthQuakeData> {
    // private static final String LOG_TAG = EarthQuakeDataAdapter.class.getSimpleName();
 
+    Drawable myShape;
+    private Context context;
+
     // Constructor
       /* @param context The current context. Used to inflate the layout file.
       * @param earthQuakeDatas A List of EarthQuakeData objects to display in a list
@@ -26,11 +39,15 @@ public class EarthQuakeDataAdapter extends ArrayAdapter<EarthQuakeData> {
     public EarthQuakeDataAdapter(@NonNull Context context, @NonNull ArrayList<EarthQuakeData> earthQuakeDatas) {
         super(context, 0, earthQuakeDatas);
 
+        this.context = context;
+
     }
 
     @NonNull
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+
+
         // Check if the existing view is being reused, otherwise inflate the view
         View listItemView = convertView;
             if(listItemView == null) {
@@ -47,12 +64,43 @@ public class EarthQuakeDataAdapter extends ArrayAdapter<EarthQuakeData> {
         //magnitudeTextView.setText(currentEarthQuakeData.getmMagnitude());
 
         // Find the TextView with view ID magnitude
-        TextView magnitudeView = (TextView) listItemView.findViewById(R.id.textView_magnitude);
+        TextView magnitudeView = (TextView) listItemView.findViewById(textView_magnitude);
         // Format the magnitude to show 1 decimal place
         String formattedMagnitude = formatMagnitude(currentEarthQuakeData.getmMagnitude());
         // Display the magnitude of the current earthquake in that TextView
         magnitudeView.setText(formattedMagnitude);
 
+       // TextView magnitudeView = (TextView) findViewById(textView_magnitude);
+      /*  Drawable background = magnitudeView.getBackground();
+        background.setColorFilter(ContextCompat.getColor(magnitudeView.getContext(),R.color.magnitude4), PorterDuff.Mode.SRC_ATOP);
+       */
+
+        //View mainContainer = findViewById(R.id.textView_magnitude);
+        GradientDrawable bgDrawable = (GradientDrawable) magnitudeView.getBackground();
+        bgDrawable.setColor(ContextCompat.getColor(context, R.color.magnitude4));
+
+        // ------------------------------------------------------------
+
+ Resources res = this.getContext().getResources();
+    myShape = res.getDrawable(R.drawable.magnitude_circle);
+
+
+        //int  intMagnitude = Integer.parseInt(formattedMagnitude);
+
+      /*  if (intMagnitude < 2 && intMagnitude > 0){
+
+            myShape.set("solid",color); = 1;
+
+        }else if ( intMagnitude < 5 && intMagnitude > 3){
+
+            magnitude_circle = 2;
+
+        }else if (intMagnitude < 8 && intMagnitude > 5){
+
+            magnitude_circle = 4;
+        }
+*/
+// ------------------------------------------------------------
 
         //getmKm
         TextView kmLocationTextView = (TextView) listItemView.findViewById(R.id.textView_km_location);

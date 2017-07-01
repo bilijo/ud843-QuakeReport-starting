@@ -1,6 +1,10 @@
 package com.example.android.quakereport;
 
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -10,15 +14,20 @@ import android.content.Loader;
 import android.content.AsyncTaskLoader;
 import android.content.Loader;
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static com.example.android.quakereport.R.id.list;
+import static com.example.android.quakereport.R.id.textView_magnitude;
 
 /**
  * Created by dam on 29.06.2017.
@@ -92,10 +101,31 @@ public class EarthquakeDataActivity extends AppCompatActivity  implements Loader
         // because this activity implements the LoaderCallbacks interface).
         loaderManager.initLoader(EARTHQUAKE_LOADER_ID, null, this);
 
+//-------------------------------------------------------------------
+        /*  TextView mTxtView = (TextView) findViewById(textView_magnitude);
+        mTxtView.getBackground().getCurrent();
+        mTxtView.setBackground(R.color.magnitude2);
+//------------------------------------------------------------------
+       View mainContainer = findViewById(R.id.textView_magnitude);
+        GradientDrawable bgDrawable = (GradientDrawable) mainContainer.getBackground();
+        bgDrawable.setColor(ContextCompat.getColor(this, R.color.magnitude4));
+//------------------------------------------------------------------
+       /* Drawable myShape;
+        Resources res = this.getResources();
+        myShape = res.getDrawable(R.drawable.magnitude_circle);
+        Log.d(LOG_TAG,"myShape " + myShape);
+
+        Toast.makeText(this, "myShape"+myShape, Toast.LENGTH_LONG).show();
+        */
+
+
     }
 
     @Override
     public Loader<List<EarthQuakeData>> onCreateLoader(int i, Bundle bundle) {
+
+        Log.d(LOG_TAG ,"initLoader"+ bundle);
+
         // Create a new loader for the given URL
         return new EarthquakeLoader(this,USGS_REQUEST_URL);
     }
@@ -115,6 +145,7 @@ public class EarthquakeDataActivity extends AppCompatActivity  implements Loader
     @Override
     public void onLoaderReset(Loader<List<EarthQuakeData>> loader) {
         // Loader reset, so we can clear out our existing data.
+        Log.d(LOG_TAG ,"initLoader" + this);
         mAdapter.clear();
     }
 
