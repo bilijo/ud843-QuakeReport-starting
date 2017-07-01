@@ -43,8 +43,9 @@ public class EarthquakeDataActivity extends AppCompatActivity  implements Loader
     public static Uri earthquakeUri;
 
 
-    /** Adapter for the list of earthquakes */
+    /** Adapter for the list of earthquakes vvv */
     private EarthQuakeDataAdapter mAdapter;
+
 
 
     @Override
