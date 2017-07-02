@@ -101,24 +101,6 @@ public class EarthquakeDataActivity extends AppCompatActivity  implements Loader
         // because this activity implements the LoaderCallbacks interface).
         loaderManager.initLoader(EARTHQUAKE_LOADER_ID, null, this);
 
-//-------------------------------------------------------------------
-        /*  TextView mTxtView = (TextView) findViewById(textView_magnitude);
-        mTxtView.getBackground().getCurrent();
-        mTxtView.setBackground(R.color.magnitude2);
-//------------------------------------------------------------------
-       View mainContainer = findViewById(R.id.textView_magnitude);
-        GradientDrawable bgDrawable = (GradientDrawable) mainContainer.getBackground();
-        bgDrawable.setColor(ContextCompat.getColor(this, R.color.magnitude4));
-//------------------------------------------------------------------
-       /* Drawable myShape;
-        Resources res = this.getResources();
-        myShape = res.getDrawable(R.drawable.magnitude_circle);
-        Log.d(LOG_TAG,"myShape " + myShape);
-
-        Toast.makeText(this, "myShape"+myShape, Toast.LENGTH_LONG).show();
-        */
-
-
     }
 
     @Override

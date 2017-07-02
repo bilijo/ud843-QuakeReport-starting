@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +28,7 @@ import static com.example.android.quakereport.R.id.textView_magnitude;
  */
 
 public class EarthQuakeDataAdapter extends ArrayAdapter<EarthQuakeData> {
-   // private static final String LOG_TAG = EarthQuakeDataAdapter.class.getSimpleName();
+    private static final String LOG_TAG = EarthQuakeDataAdapter.class.getSimpleName();
 
     Drawable myShape;
     private Context context;
@@ -77,29 +78,29 @@ public class EarthQuakeDataAdapter extends ArrayAdapter<EarthQuakeData> {
 
         //View mainContainer = findViewById(R.id.textView_magnitude);
         GradientDrawable bgDrawable = (GradientDrawable) magnitudeView.getBackground();
-        bgDrawable.setColor(ContextCompat.getColor(context, R.color.magnitude4));
+        //bgDrawable.setColor(ContextCompat.getColor(context, R.color.magnitude4));
 
         // ------------------------------------------------------------
 
- Resources res = this.getContext().getResources();
-    myShape = res.getDrawable(R.drawable.magnitude_circle);
 
+       // int  intMagnitude = Integer.parseInt(formattedMagnitude);
+        float  intMagnitude = (float) currentEarthQuakeData.getmMagnitude();
 
-        //int  intMagnitude = Integer.parseInt(formattedMagnitude);
+        Log.d(LOG_TAG ,"intMagnitude  "+ intMagnitude);
 
-      /*  if (intMagnitude < 2 && intMagnitude > 0){
+        if (intMagnitude < 6.2 && intMagnitude > 5){
+            Log.d(LOG_TAG ,"currentEarthQuakeData.getmMagnitude()  "+ currentEarthQuakeData.getmMagnitude());
+            bgDrawable.setColor(ContextCompat.getColor(context, R.color.magnitude9));
 
-            myShape.set("solid",color); = 1;
+        }else if ( intMagnitude < 6.5 && intMagnitude >= 6.2){
 
-        }else if ( intMagnitude < 5 && intMagnitude > 3){
+            bgDrawable.setColor(ContextCompat.getColor(context, R.color.magnitude2));
 
-            magnitude_circle = 2;
+        }else if (intMagnitude < 7 && intMagnitude >= 6.5){
 
-        }else if (intMagnitude < 8 && intMagnitude > 5){
-
-            magnitude_circle = 4;
+            bgDrawable.setColor(ContextCompat.getColor(context, R.color.magnitude4));
         }
-*/
+
 // ------------------------------------------------------------
 
         //getmKm
