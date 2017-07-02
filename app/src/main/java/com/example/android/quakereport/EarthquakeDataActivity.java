@@ -34,8 +34,6 @@ import static com.example.android.quakereport.R.id.textView_magnitude;
  */
 public class EarthquakeDataActivity extends AppCompatActivity  implements LoaderCallbacks<List<EarthQuakeData>> {
 
-
-
     /**
      * Constant value for the earthquake loader ID. We can choose any integer.
      * This really only comes into play if you're using multiple loaders.
@@ -54,7 +52,6 @@ public class EarthquakeDataActivity extends AppCompatActivity  implements Loader
 
     /** Adapter for the list of earthquakes */
     private EarthQuakeDataAdapter mAdapter;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -26,7 +26,7 @@ public class EarthQuakeData {
 
     public EarthQuakeData(double vMagnitude,  String vLocation,  long vTime, String url) {
         mMagnitude = vMagnitude;
-       // mKm = vKm;
+
         mLocation = vLocation;
         mUrl = url;
         mTime = vTime;
@@ -37,9 +37,7 @@ public class EarthQuakeData {
         return mMagnitude;
     }
 
-    public String getmKm() {
-        return mKm;
-    }
+
 
     public String getmLocation() {
         return mLocation;

@@ -1,8 +1,6 @@
 package com.example.android.quakereport;
 
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.support.annotation.NonNull;
@@ -15,11 +13,9 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
-import static android.R.attr.color;
-import static android.R.attr.shape;
-import static com.example.android.quakereport.R.drawable.magnitude_circle;
 import static com.example.android.quakereport.R.id.textView_magnitude;
 
 
@@ -103,33 +99,42 @@ public class EarthQuakeDataAdapter extends ArrayAdapter<EarthQuakeData> {
 
 // ------------------------------------------------------------
 
-        //getmKm
-        TextView kmLocationTextView = (TextView) listItemView.findViewById(R.id.textView_km_location);
-        kmLocationTextView.setText(currentEarthQuakeData.getmKm());
+
 
         //getmLocation
         TextView placelocationTextView = (TextView) listItemView.findViewById(R.id.textView_location);
         placelocationTextView.setText(currentEarthQuakeData.getmLocation());
 
-        //getmDate
-        TextView dateTextView = (TextView) listItemView.findViewById(R.id.textView_date);
-        dateTextView.setText(currentEarthQuakeData.getUrl());
+        //getUrl
+        TextView urlTextView = (TextView) listItemView.findViewById(R.id.textView_url);
+        urlTextView.setText(currentEarthQuakeData.getUrl());
 
         //getmTime
         TextView timeTextView = (TextView) listItemView.findViewById(R.id.textView_time);
-        timeTextView.setText(String.valueOf(currentEarthQuakeData.getmTime()));
+        //timeTextView.setText(String.valueOf(currentEarthQuakeData.getmTime()));
+        timeTextView.setText(getDateString(currentEarthQuakeData.getmTime()));
 
         return listItemView;
 
+
         }
 
-    /**
-     * Return the formatted magnitude string showing 1 decimal place (i.e. "3.2")
-     * from a decimal magnitude value.
-     */
-    private String formatMagnitude(double magnitude) {
-        DecimalFormat magnitudeFormat = new DecimalFormat("0.0");
-        return magnitudeFormat.format(magnitude);
-    }
+        /**
+         * Return the formatted magnitude string showing 1 decimal place (i.e. "3.2")
+         * from a decimal magnitude value.
+         */
+        private String formatMagnitude(double magnitude) {
+            DecimalFormat magnitudeFormat = new DecimalFormat("0.0");
+            return magnitudeFormat.format(magnitude);
+        }
 
-    }
+        /**
+         * Returns a formatted date and time string for when the earthquake happened.
+         */
+        private String getDateString(long timeInMilliseconds) {
+            SimpleDateFormat formatter = new SimpleDateFormat("EEE, d MMM yyyy 'at' HH:mm:ss z");
+            return formatter.format(timeInMilliseconds);
+        }
+
+
+}

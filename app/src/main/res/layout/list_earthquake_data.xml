@@ -7,31 +7,29 @@
 
     <TextView
         android:id="@+id/textView_magnitude"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_weight="0"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
         android:background="@drawable/magnitude_circle"
-        android:layout_margin="10dp"
+        android:layout_margin="4dp"
         android:text="eee"/>
 
-    <TextView
-        android:id="@+id/textView_km_location"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:layout_margin="10dp"
-        android:text="gggg"/>
+
 
     <TextView
         android:id="@+id/textView_location"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
+        style="@style/earthquakePlace"
         android:layout_margin="10dp"
         android:text="gggg"/>
 
     <TextView
-        android:id="@+id/textView_date"
+        android:id="@+id/textView_url"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
